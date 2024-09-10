@@ -6,5 +6,10 @@ set -u
 IMAGE1=book-catalog
 IMAGE2=inventory-management
 
-docker build -t $CONTAINER_REGISTRY/$IMAGE1:$VERSION --file ./book_catalog/Dockerfile .
-docker build -t $CONTAINER_REGISTRY/$IMAGE2:$VERSION --file ./inventory_management/Dockerfile .
+cd ..
+cd book_catalog
+docker build -t $CONTAINER_REGISTRY/$IMAGE1:$VERSION --file Dockerfile .
+cd ..
+cd inventory_management
+docker build -t $CONTAINER_REGISTRY/$IMAGE2:$VERSION --file Dockerfile .
+cd ..
