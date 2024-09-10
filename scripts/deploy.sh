@@ -4,4 +4,4 @@ set -u
 : "$VERSION"
 
 cd scripts/kubernetes
-kubectl apply -f deploy.yaml
+kubectl apply -f deployment.yaml

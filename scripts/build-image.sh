@@ -3,8 +3,8 @@ set -u
 : "$CONTAINER_REGISTRY"
 : "$VERSION"
 
-IMAGE1=book-catalog
-IMAGE2=inventory-management
+IMAGE1=pavan-jarjana-sit722-part5-book_catalog
+IMAGE2=pavan-jarjana-sit722-part5-inventory_management
 
 cd ..
 cd book_catalog
