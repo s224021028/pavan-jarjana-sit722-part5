@@ -3,4 +3,5 @@ set -u
 : "$CONTAINER_REGISTRY"
 : "$VERSION"
 
-envsubst < ./scripts/kubernetes/deploy.yaml | kubectl delete -f -
+cd scripts/kubernetes
+kubectl delete -f deployment.yaml
