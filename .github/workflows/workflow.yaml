@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build
-        run: ./scripts/build-image.sh
+        run: chmod +x ./scripts/build-image.sh
 
       - name: Azure Login via OIDC
         uses: azure/login@v1
@@ -33,7 +33,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Publish
-        run: ./scripts/push-image.sh
+        run: chmod +x ./scripts/push-image.sh
 
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER }}
@@ -43,4 +43,4 @@ jobs:
           kubectl-version: v1.30.3
       
       - name: Deploy
-        run: ./scripts/deploy.sh
+        run: chmod +x ./scripts/deploy.sh
