@@ -43,8 +43,6 @@ jobs:
         run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER }}
       
       - uses: tale/kubectl-action@v1
-        with:
-          kubectl-version: v1.30.3
       
       - name: Deploy
         run: chmod +x ./scripts/deploy.sh
