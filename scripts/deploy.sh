@@ -3,4 +3,5 @@ set -u
 : "$CONTAINER_REGISTRY"
 : "$VERSION"
 
-envsubst < ./scripts/kubernetes/deploy.yaml | kubectl apply -f -
+cd scripts/kubernetes
+kubectl apply -f deploy.yaml
