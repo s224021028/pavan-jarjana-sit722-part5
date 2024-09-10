@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build
-        run: chmod +x ./scripts/build-image.sh
+        run: bash ./scripts/build-image.sh
 
       - name: Azure Login via OIDC
         uses: azure/login@v1
@@ -37,7 +37,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Publish
-        run: chmod +x ./scripts/push-image.sh
+        run: bash ./scripts/push-image.sh
 
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER }}
@@ -46,4 +46,4 @@ jobs:
         run: sudo az aks install-cli
       
       - name: Deploy
-        run: chmod +x ./scripts/deploy.sh
+        run: bash ./scripts/deploy.sh
