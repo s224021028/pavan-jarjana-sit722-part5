@@ -5,8 +5,8 @@ set -u
 : "$REGISTRY_USERNAME"
 : "$REGISTRY_PASSWORD"
 
-IMAGE1="book-catalog"
-IMAGE2="inventory-management"
+IMAGE1=book-catalog
+IMAGE2=inventory-management
 
 echo $REGISTRY_PASSWORD | docker login $CONTAINER_REGISTRY --username $REGISTRY_USERNAME --password-stdin
 docker push $CONTAINER_REGISTRY/$IMAGE1:$VERSION

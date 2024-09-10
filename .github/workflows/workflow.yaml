@@ -42,7 +42,8 @@ jobs:
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER }}
       
-      - uses: tale/kubectl-action@v1
+      - name: Install kubectl
+        run: sudo az aks install-cli
       
       - name: Deploy
         run: chmod +x ./scripts/deploy.sh
