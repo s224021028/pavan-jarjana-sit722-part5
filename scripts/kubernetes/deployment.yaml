@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: book-catalog
-        image: s224021028acr.azurecr.io/pavan-jarjana-sit722-part5-book_catalog:23204b7d906d8edda986e3365cf0a3e639192bfb
+        image: s224021028acr.azurecr.io/pavan-jarjana-sit722-part5-book_catalog:d04809ad80cb2a924fb5072d7bc708b0f405a945
         ports:
         - containerPort: 8000
         env:
@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
       - name: inventory-management
-        image: s224021028acr.azurecr.io/pavan-jarjana-sit722-part5-inventory_management:23204b7d906d8edda986e3365cf0a3e639192bfb
+        image: s224021028acr.azurecr.io/pavan-jarjana-sit722-part5-inventory_management:d04809ad80cb2a924fb5072d7bc708b0f405a945
         ports:
         - containerPort: 8001
         env:
