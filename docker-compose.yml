@@ -1,1 +1,21 @@
 # Your Solution
+version: "3.8"
+services:
+  book_catalog:
+    build:
+      context: ./book_catalog
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://s224021028:admin-roy97@s224021028apdb.postgres.database.azure.com:5432/postgres
+    command: "uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
+  inventory_management:
+    build:
+      context: ./inventory_management
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://s224021028:admin-roy97@s224021028apdb.postgres.database.azure.com:5432/postgres
+    command: "uvicorn app.main:app --reload --host 0.0.0.0 --port 8001"
