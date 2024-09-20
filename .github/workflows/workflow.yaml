@@ -33,7 +33,7 @@ jobs:
         run: bash ./scriptsbuild-image.sh
       
       - name: Install Terraform
-        uses: hashicorp/setup-terrafrom@v3
+        uses: hashicorp/setup-terraform@v3
 
       - name: Setup infrastructure
         run: bash ./scripts/terraform.sh

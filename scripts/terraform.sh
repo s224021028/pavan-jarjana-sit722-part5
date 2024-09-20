@@ -4,6 +4,6 @@ set -u
 : "$ARM_TENANT_ID"
 
 cd scripts/terraform
-terrafrom init
+terraform init
 terraform plan -out=tfplan
 terraform apply -auto-approve tfplan
