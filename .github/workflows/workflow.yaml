@@ -47,7 +47,7 @@ jobs:
       - name: Publish
         run: |
           ACR_PASSWORD=$(az acr credential show --name ${{ secrets.CONTAINER_REGISTRY }} --query "passwords[0].value" --output tsv)
-          echo "REGISRTY_PASSWORD=${ACR_PASSWORD}" >> $GITHUB_ENV
+          echo "REGISTRY_PASSWORD=${ACR_PASSWORD}" >> $GITHUB_ENV
           bash ./scripts/push-image.sh
 
       - name: Get AKS credentials
