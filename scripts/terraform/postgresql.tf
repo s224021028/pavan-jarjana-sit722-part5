@@ -1,7 +1,7 @@
 resource "azurerm_postgresql_flexible_server" "apsql" {
   name                          = "s224021028apdb"
-  resource_group_name           = var.arg_name
-  location                      = var.location
+  resource_group_name           = azurerm_resource_group.arg.name
+  location                      = azurerm_resource_group.arg.location
   version                       = "16"
   sku_name                      = "B_Standard_B1ms"
   storage_mb                    = 32768
