@@ -49,7 +49,7 @@ jobs:
         with:
           login-server: ${{ secrets.CONTAINER_REGISTRY }}
           username: ${{ secrets.REGISTRY_USERNAME }}
-          password: $(az acr credential show --name ${{ secrets.CONTAINER_REGISTRY }} --query "passwords[0].value")
+          password: $(az acr credential show --name ${{ secrets.CONTAINER_REGISTRY }} --query "passwords[0].value" --output tsv)
 
       - name: Publish
         run: bash ./scripts/push-image.sh
