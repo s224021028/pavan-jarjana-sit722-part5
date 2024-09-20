@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build
-        run: bash ./scriptsbuild-image.sh
+        run: bash ./scripts/build-image.sh
       
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v3
