@@ -20,6 +20,9 @@ jobs:
       CONTAINER_REGISTRY: ${{ secrets.CONTAINER_REGISTRY }}
       REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
       REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     steps:
 
@@ -29,12 +32,10 @@ jobs:
       - name: Build
         run: bash ./scriptsbuild-image.sh
       
-      - name: Terraform
-        env:
-          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Install Terraform
         uses: hashicorp/setup-terrafrom@v3
+
+      - name: Setup infrastructure
         run: bash ./scripts/terraform.sh
 
       - name: Azure Login via OIDC
