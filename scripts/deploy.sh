@@ -5,3 +5,4 @@ set -u
 
 cd scripts/kubernetes
 kubectl apply -f deployment.yaml
+cd ..
