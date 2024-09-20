@@ -21,16 +21,9 @@ resource "azurerm_postgresql_flexible_server" "apsql" {
   }
 }
 
-resource "azurerm_postgresql_flexible_server_database" "apsqldb" {
-    name = "postgres"
-    server_id = azurerm_postgresql_flexible_server.apsql.id
-    collation = "en_US.utf8"
-    charset   = "utf8"
-}
-
 resource "azurerm_postgresql_flexible_server_firewall_rule" "allow_all_ips" {
   name                = "AllowAllIPs"
   server_id           = azurerm_postgresql_flexible_server.apsql.id
   start_ip_address    = "0.0.0.0"
-  end_ip_address      = "255.255.255.255"
+  end_ip_address      = "255.255.255.255"                               
 }

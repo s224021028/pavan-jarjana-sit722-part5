@@ -16,10 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      VERSION: ${{ github.sha }}
+      VERSION: latest
       CONTAINER_REGISTRY: ${{ secrets.CONTAINER_REGISTRY }}
       REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}
-      REGISTRY_PASSWORD: ${{ secrets.REGISTRY_PASSWORD }}
       ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
@@ -46,7 +45,10 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Publish
-        run: bash ./scripts/push-image.sh
+        run: |
+          ACR_PASSWORD=$(az acr credential show --name ${{ secrets.CONTAINER_REGISTRY }} --query "passwords[0].value" --output tsv)
+          echo "REGISRTY_PASSWORD=${ACR_PASSWORD}" >> $GITHUB_ENV
+          bash ./scripts/push-image.sh
 
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group ${{ secrets.AKS_RESOURCE_GROUP }} --name ${{ secrets.AKS_CLUSTER }}
